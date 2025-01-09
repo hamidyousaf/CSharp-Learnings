@@ -27,8 +27,6 @@ person.DisplayInfo();
 Employee employee = new("Hamid", 26, "Software Engineer");
 employee.DisplayInfo();
 
-#endregion
-
 public class Person(string name, int age)
 {
     public void DisplayInfo()
@@ -40,3 +38,5 @@ public class Employee(string name, int age, string designation) : Person(name, a
 {
     public string Designation { get; set; } = designation;
 }
+
+#endregion
