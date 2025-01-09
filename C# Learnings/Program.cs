@@ -1,7 +1,13 @@
 ﻿#region C# 12
+using Name = string;
+using Age = int;
+using NumberArray = int[];
+using NumberList = System.Collections.Generic.List<int>;
+using Point = (int x, int y);
+
 // collection expression.
 // Collection expression is a concise syntax for creating and initializing the arrays, lists, and other collection types. It replaces the curly braces into square braces.
-
+/*
 int[] array1 = new int[] { 1, 2, 3 };
 int[] array2 = { 1, 2, 3 };
 int[] array3 = [1, 2, 3];
@@ -19,9 +25,11 @@ for (int i = 0; i < merge2.Length; i++)
 {
     Console.WriteLine(merge2[i]);
 }
+*/
+
 // primary constructor
 // primary constructors were introduced to simplifying the class and struct by declaring constructor parameters with class defination.
-
+/*
 Person person = new("Hamid", 26);
 person.DisplayInfo();
 Employee employee = new("Hamid", 26, "Software Engineer");
@@ -38,5 +46,46 @@ public class Employee(string name, int age, string designation) : Person(name, a
 {
     public string Designation { get; set; } = designation;
 }
+*/
+///////////////////////////////
+/////// Alias any type. ///////
+///////////////////////////////
+// In this feature, we can assign alias to any type by using the using directive. This enhances the code readablity and type complexity.
+
+Person1 person1 = new("Hamid", 26);
+person1.DisplayInfo();
+person1.DisplayNumberArray([1, 2, 3]);
+person1.DisplayNumberList([1, 2, 3]);
+person1.DisplayTuple((10, 20));
+public class Person1(Name name, Age age)
+{
+    public void DisplayInfo()
+    {
+        Console.WriteLine($"Name is {name} and age is {age}.");
+    }
+
+    // alias for collection.
+    public void DisplayNumberArray(NumberArray numbers)
+    {
+        foreach (var number in numbers)
+        {
+            Console.WriteLine($"Array Number: {number}");
+        }
+    }
+    public void DisplayNumberList(NumberList numbers)
+    {
+        foreach (var number in numbers)
+        {
+            Console.WriteLine($"List Number: {number}");
+        }
+    }
+    // alias for tuples.
+    public void DisplayTuple(Point point)
+    {
+        Console.WriteLine($"x: {point.x}, y: {point.y}");
+    }
+}
+
+
 
 #endregion
