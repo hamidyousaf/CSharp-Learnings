@@ -6,6 +6,7 @@
     <RootNamespace>C__Learnings</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+	  <EnableInterceptors>true</EnableInterceptors>
   </PropertyGroup>
 
 </Project>

@@ -4,6 +4,7 @@ using Age = int;
 using NumberArray = int[];
 using NumberList = System.Collections.Generic.List<int>;
 using Point = (int x, int y);
+using System.Runtime.CompilerServices;
 
 // collection expression.
 // Collection expression is a concise syntax for creating and initializing the arrays, lists, and other collection types. It replaces the curly braces into square braces.
@@ -51,7 +52,7 @@ public class Employee(string name, int age, string designation) : Person(name, a
 /////// Alias any type. ///////
 ///////////////////////////////
 // In this feature, we can assign alias to any type by using the using directive. This enhances the code readablity and type complexity.
-
+/*
 Person1 person1 = new("Hamid", 26);
 person1.DisplayInfo();
 person1.DisplayNumberArray([1, 2, 3]);
@@ -85,7 +86,36 @@ public class Person1(Name name, Age age)
         Console.WriteLine($"x: {point.x}, y: {point.y}");
     }
 }
+*/
+////////////////////////////
+/////// Interceptor. ///////
+////////////////////////////
 
+Person person = new();
+person.DisplayInfo("Hamid");
+person.DisplayInfo("Hamza");
+person.DisplayInfo("Hassan");
 
+public class Person
+{
+    public void DisplayInfo(string name)
+    {
+        Console.WriteLine($"Name: {name}");
+    }
+}
+// Interceptor Definition
+public static class InfoInterceptor
+{
+    [InterceptsLocation("Program.cs", line: 96, character: 8)]
+    public static int Add(int a, int b)
+    {
+        Console.WriteLine("Intercepted Call!");
+        return a + b + 1; // Modified behavior
+    }
+}
 
+[AttributeUsage(AttributeTargets.Method, AllowMultiple = true)]
+sealed class InterceptsLocationAttribute(string filePath, int line, int character) : Attribute
+{
+}
 #endregion
