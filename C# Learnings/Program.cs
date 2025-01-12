@@ -122,7 +122,7 @@ sealed class InterceptsLocationAttribute(string filePath, int line, int characte
 //////////////////////////////
 /////// Inline Arrays. ///////
 //////////////////////////////
-
+/*
 Top10NumberStruct numbers = new();
 
 for (int i = 0; i < 10; i++)
@@ -146,6 +146,15 @@ public struct Top10NumberStruct
 // 1)- We can't use InlineArray on class.
 // 2)- We can't perform Linq operations in InlineArray.
 // 3)- We only use inline array in struct, and after creating the instance, we can retrieve values by index or in foreach loop.
+*/
 
+////////////////////////////////////////////////////////
+/////// Default Parameters in Lambda Expression. ///////
+////////////////////////////////////////////////////////
+
+var result = (int numberOne, int numberTwo = 5) => numberOne + numberTwo;
+
+Console.WriteLine(result(10));  // Output: 15
+Console.WriteLine(result(10, 10));  // Output: 20
 
 #endregion
