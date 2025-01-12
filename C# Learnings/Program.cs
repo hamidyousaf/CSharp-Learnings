@@ -90,7 +90,7 @@ public class Person1(Name name, Age age)
 ////////////////////////////
 /////// Interceptor. ///////
 ////////////////////////////
-
+/*
 Person person = new();
 person.DisplayInfo("Hamid");
 person.DisplayInfo("Hamza");
@@ -118,4 +118,34 @@ public static class InfoInterceptor
 sealed class InterceptsLocationAttribute(string filePath, int line, int character) : Attribute
 {
 }
+*/
+//////////////////////////////
+/////// Inline Arrays. ///////
+//////////////////////////////
+
+Top10NumberStruct numbers = new();
+
+for (int i = 0; i < 10; i++)
+{
+    numbers[i] = i;
+}
+
+
+foreach (var number in numbers)
+{
+    Console.WriteLine($"Number: {number}");
+}
+
+[InlineArray(10)]
+public struct Top10NumberStruct
+{
+    public int _element;
+}
+
+// limitation
+// 1)- We can't use InlineArray on class.
+// 2)- We can't perform Linq operations in InlineArray.
+// 3)- We only use inline array in struct, and after creating the instance, we can retrieve values by index or in foreach loop.
+
+
 #endregion
